@@ -1,84 +1,149 @@
-/* 主要容器 */
+/* App.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
+  width: 100%;
+  min-height: 500px;
+  background: white;
+  padding: 10px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* 👈 這行是關鍵！隱藏右邊 */
+  position: relative;
+}
+
+/* 滑動表單區域 */
+.form-box {
+  display: flex;
+  width: 200%;
+  transition: transform 0.5s ease;
+  overflow: hidden; /* 確保內容不會超出容器 */
+}
+
+/* 切換時滑動效果 */
+.form-box.active {
+  transform: translateX(-50%);
+}
+
+/* 每個表單佔一半寬度 */
+.form {
+  width: 50%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  flex-shrink: 0; /* 防止表單縮小 */
+}
+
+/* 切換按鈕區域 */
+.toggle-box {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.navbar button {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.navbar button:hover,
+.navbar button:focus {
+  border-bottom: 2px solid #4f7df9;
+  color: #4f7df9;
+}
+
+/* 標題 */
+h2,
+h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* 輸入區塊 */
+.input-group,
+.form-control {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #f4f4f4;
-  padding: 20px;
-  min-height: 100vh;
+  margin-bottom: 15px;
 }
 
-/* 帳號列表 */
-.user-list {
-  width: 400px;
-  padding: 15px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  margin-bottom: 20px; /* 增加與登入框的間距 */
+.form-control {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: 0.2s;
+  width: 100%;
 }
 
-.user-list h3 {
-  margin-bottom: 10px;
-}
-
-.user-list ul {
-  list-style: none;
-  padding: 0;
-}
-
-.user-list li {
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
-
-/* 登入與修改帳戶框 */
-.login-box, .profile-box {
-  width: 350px;
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
+.form-control:focus {
+  border-color: #4f7df9;
+  outline: none;
+  box-shadow: 0 0 5px rgba(79, 125, 249, 0.3);
 }
 
 /* 按鈕 */
 .btn {
   width: 100%;
-  padding: 10px;
-  border: none;
+  padding: 12px;
   font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background-color: #4f7df9;
+  color: white;
   cursor: pointer;
-  border-radius: 5px;
+  transition: 0.3s;
   margin-top: 10px;
-  transition: 0.3s ease;
 }
 
-.login-btn {
-  background-color: #007bff;
-  color: white;
-}
-
-.update-btn {
-  background-color: #28a745;
-  color: white;
+.btn:hover {
+  background-color: #365edc;
 }
 
 .logout-btn {
-  background-color: #dc3545;
-  color: white;
+  background-color: #ff6b6b;
 }
 
-/* 訊息 */
-.success-message {
-  color: green;
-  font-weight: bold;
-  margin-top: 10px;
+.logout-btn:hover {
+  background-color: #e85b5b;
 }
 
+/* 訊息樣式 */
 .error-message {
-  color: red;
-  font-weight: bold;
+  color: #e74c3c;
+  font-size: 14px;
   margin-top: 10px;
+  text-align: center;
+}
+
+.success-message {
+  color: #2ecc71;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
 }
